@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Thank Hut</title>
+    <title>Recipes | My Winterland</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -232,16 +232,148 @@
                 display: none;
             }
         }
-        .home-section{
-            display:flex;
-            flex-direction: column;
+
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        section {
+            width: 100%;
+            display: flex;
             align-items: center;
-            justify-content: space-evenly;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        .container {
+            width: 100%;
+            height: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        form {
+            width: 90%;
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: rgb(223, 223, 223);
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            font-size: 0.2rem;
+            background-color: rgb(223, 223, 223);
+            display: inline-block;
+        }
+
+        form ion-icon {
+            width: 8%;
+            font-size: 2rem;
+            margin-bottom: -8px;
+            color: rgb(75, 75, 75);
+            display: inline-block;
+        }
+
+        .search-result {
+            margin-top: 50px;
+            width: 100%;
+            display: grid;
+            grid-gap: 25px;
+            grid-template: auto / repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .item {
+            width: 100%;
+            border-radius: 8px;
+            background-color: rgb(37, 37, 37);
+            padding: 15px;
+            overflow: hidden;
+        }
+
+        .item img {
+            width: 100%;
+            height: 300px;
+            border-radius: 4px;
+        }
+
+        .flex-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .search-result .title {
+            color: whitesmoke;
+            margin: 20px 10px 0 0;
+            font-size: 1.8rem;
+            font-weight: 400;
+        }
+
+        .view-btn {
+            text-decoration: none;
+            text-align: center;
+            width: 130px;
+            padding: 10px 0;
+            color: whitesmoke;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-top: 20px;
+            border-radius: 4px;
+            align-self: flex-start;
+        }
+
+        .item-data {
+            color: whitesmoke;
+            display: block;
+            margin-top: 10px;
+            font-size: 1.4rem;
+            letter-spacing: 0.05rem;
+            line-height: 2rem;
+        }
+
+        .container.initial .brand {
+            font-size: 7rem;
+        }
+
+        .container.initial form {
+            max-width: 500px;
+        }
+
+        .container.initial form input {
+            padding: 20px;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .search-result {
+                grid-gap: 10px;
+            }
+
+            .container.initial .brand {
+                font-size: 4rem;
+            }
+
+            .container.initial form {
+                max-width: 500px;
+            }
+
+            .container.initial form input {
+                padding: 10px;
+                font-size: 2rem;
+            }
         }
     </style>
-    <div class="sidebar">
+       <div class="sidebar">
         <div class="logo-details">
-            <div class="logo_name">Thank Hut</div>
+            <div class="logo_name">My Winterland</div>
             <i class='bx bx-menu' id="btn"></i>
         </div>
         <ul class="nav-list">
@@ -253,20 +385,47 @@
                 <span class="tooltip">Dashboard</span>
             </li>
             <li>
-                <a href="/note">
-                    <i class='bx bx-notepad'></i>
-                    <span class="links_name">Write a note</span>
+                <a href="/budget">
+                    <i class='bx bx-coin'></i>
+                    <span class="links_name">Maintain budget</span>
                 </a>
-                <span class="tooltip">Write a note</span>
+                <span class="tooltip">Maintain budget</span>
+            </li>
+            <li>
+                <a href="/tracking">
+                    <i class='bx bxs-truck'></i>
+                    <span class="links_name">Send Tracking Details</span>
+                </a>
+                <span class="tooltip">Send Tracking Details</span>
+            </li>
+            <li>
+                <a href="/movie">
+                    <i class='bx bx-movie-play'></i>
+                    <span class="links_name">Recommended Movies</span>
+                </a>
+                <span class="tooltip">Recommended Movies</span>
+            </li>
+            <li>
+                <a href="/recepies">
+                    <i class='bx bx-book'></i>
+                    <span class="links_name">Recipes</span>
+                </a>
+                <span class="tooltip">Recipes</span>
+            </li>
+            <li>
+                <a href="/donate">
+                    <i class='bx bx-donate-heart'></i>
+                    <span class="links_name">Donate</span>
+                </a>
+                <span class="tooltip">Donate</span>
             </li>
             <li>
                 <a href="/send">
-                    <i class='bx bx-mail-send' ></i>
-                    <span class="links_name">Send thank you card</span>
+                    <i class='bx bx-mail-send'></i>
+                    <span class="links_name">Send New Year card</span>
                 </a>
-                <span class="tooltip">Send thank you card</span>
+                <span class="tooltip">Send New Year card</span>
             </li>
-            
 
             <li class="profile">
                 <a href="/signout">
@@ -276,13 +435,68 @@
         </ul>
     </div>
     <section class="home-section">
-
+        <div class="container initial">
+            <form>
+                <input type="text" placeholder="Search for recipe here...">
+                <ion-icon name="search"></ion-icon>
+            </form>
+            <div class="search-result">
+            </div>
+        </div>
+        <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
     </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js"></script>
 
     <script>
+
+        const searchForm = document.querySelector("form");
+        const searchResultDiv = document.querySelector(".search-result");
+        const container = document.querySelector(".container");
+        let searchQuery = "";
+        const APP_ID = "05eda2f5";
+        const APP_key = "43364577b9070e7b87e5aaa41e439afa";
+        // console.log(container)
+        searchForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            searchQuery = e.target.querySelector("input").value;
+            fetchAPI();
+        });
+
+        async function fetchAPI() {
+            const baseURL = `https://api.edamam.com/search?q=${searchQuery}&app_id=${APP_ID}&app_key=${APP_key}&from=0&to=20`;
+            const response = await fetch(baseURL);
+            const data = await response.json();
+            generateHTML(data.hits);
+            console.log(data);
+        }
+
+        function generateHTML(results) {
+            container.classList.remove("initial");
+            let generatedHTML = "";
+            results.map((result) => {
+                generatedHTML += `
+      <div class="item">
+        <img src="${result.recipe.image}" alt="img">
+        <div class="flex-container">
+          <h1 class="title">${result.recipe.label}</h1>
+          <a class="view-btn" target="_blank" href="${result.recipe.url
+                    }">View Recipe</a>
+        </div>
+        <p class="item-data">Calories: ${result.recipe.calories.toFixed(2)}</p>
+        <p class="item-data">Diet label: ${result.recipe.dietLabels.length > 0
+                        ? result.recipe.dietLabels
+                        : "No Data Found"
+                    }</p>
+        <p class="item-data">Health labels: ${result.recipe.healthLabels}</p>
+      </div>
+    `;
+            });
+            searchResultDiv.innerHTML = generatedHTML;
+        }
+
+
         function imgsplit() {
             $("#splitform").append("<input type = 'file' name = 'myfile' id='myfile'>")
             $("#mos").val('1');
