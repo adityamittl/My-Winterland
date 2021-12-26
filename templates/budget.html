@@ -9,6 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -212,6 +215,7 @@
             width: calc(100% - 78px);
             transition: all 0.5s ease;
             z-index: 2;
+            font-size: 20px;
         }
 
         .sidebar.open~.home-section {
@@ -239,8 +243,116 @@
             align-items: center;
             justify-content: space-evenly;
         }
+
+        .budget-submit {
+            background: transparent;
+            border: 0.1rem solid #317b22;
+            color: #317b22;
+            font-size: 16px;
+        }
+
+        .expense-submit {
+            background: transparent;
+            border: 0.1rem solid #b80c09;
+            color: #b80c09;
+        }
+
+        .expense-submit:hover {
+            background: #b80c09;
+            color: #f5f5f5f5;
+        }
+
+        .budget-submit:hover {
+            background: #317b22;
+            color: #333333;
+        }
+
+        .budget-input {
+            border: 0.05rem solid #317b22 !important;
+        }
+
+        .expense-input {
+            border: 0.05rem solid #b80c09 !important;
+        }
+
+        .expense-amount,
+        .expense-title {
+            color: #b80c09;
+        }
+
+        .edit-icon {
+            color: #05668d;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none !important;
+        }
+
+        .delete-icon {
+            color: #b80c09;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none !important;
+        }
+
+        .edit-icon:hover {
+            color: #05668d;
+        }
+
+        .delete-icon:hover {
+            color: #b80c09;
+        }
+
+        .showItem {
+            display: block;
+        }
+
+        .info-title {
+            font-size: 1.5rem;
+        }
+
+        .budget {
+            font-size: 1.6rem;
+            color: #317b22;
+        }
+
+        .expense {
+            font-size: 1.6rem;
+            color: #b80c09;
+        }
+
+        .balance {
+            font-size: 1.6rem;
+        }
+
+        .budget-icon,
+        .expense-icon,
+        .balance-icon {
+            font-size: 2.5rem;
+            color: #05668d;
+        }
+
+        .showRed {
+            color: #b80c09;
+        }
+
+        .showGreen {
+            color: #317b22;
+        }
+
+        .showBlack {
+            color: #333333;
+        }
+
+        .list-item {
+            flex: 0 0 33.33%;
+            text-align: center;
+        }
+
+        .expense-item {
+            height: 2rem;
+        }
     </style>
-     <div class="sidebar">
+    <div class="sidebar">
         <div class="logo-details">
             <div class="logo_name">My Winterland</div>
             <i class='bx bx-menu' id="btn"></i>
@@ -255,7 +367,7 @@
             </li>
             <li>
                 <a href="/budget">
-                    <i class='bx bx-coin' ></i>
+                    <i class='bx bx-coin'></i>
                     <span class="links_name">Maintain budget</span>
                 </a>
                 <span class="tooltip">Maintain budget</span>
@@ -269,7 +381,7 @@
             </li>
             <li>
                 <a href="/movie">
-                    <i class='bx bx-movie-play' ></i>
+                    <i class='bx bx-movie-play'></i>
                     <span class="links_name">Recommended Movies</span>
                 </a>
                 <span class="tooltip">Recommended Movies</span>
@@ -283,7 +395,7 @@
             </li>
             <li>
                 <a href="/donate">
-                    <i class='bx bx-donate-heart' ></i>
+                    <i class='bx bx-donate-heart'></i>
                     <span class="links_name">Donate</span>
                 </a>
                 <span class="tooltip">Donate</span>
@@ -305,10 +417,264 @@
     </div>
     <section class="home-section">
 
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-11 mx-auto pt-3">
+                    <div class="row">
+                        <div class="col-md-5 my-3">
+                            <form id="budget-form" class=" budget-form">
+                                <h5 class="text-capitalize">please enter your budget</h5>
+                                <div class="form-group">
+                                    <input type="number" class="form-control budget-input" id="budget-input">
+                                </div>
+                                <button type="submit" class="btn text-capitalize budget-submit"
+                                    id="budget-submit">calculate</button>
+                            </form>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="row my-3" style="display: grid; grid-column: 1 / 3;">
+                                <div class="col-4 text-center mb-2" style="display: grid;">
+                                    <h6 class="text-uppercase info-title">budget</h6>
+                                    <span class="budget-icon"><i class="fas fa-money-bill-alt"></i></span>
+                                    <h4 class="text-uppercase mt-2 budget" id="budget"><span>$ </span><span
+                                            id="budget-amount">0</span></h4>
+                                </div>
+                                <div class="col-4 text-center" style="display: grid;">
+                                    <h6 class="text-uppercase info-title">expenses</h6>
+                                    <span class="expense-icon"><i class="far fa-credit-card"></i></span>
+                                    <h4 class="text-uppercase mt-2 expense" id="expense"><span>$ </span><span
+                                            id="expense-amount">0</span></h4>
+                                </div>
+                                <div class="col-4 text-center" style="display: grid;">
+                                    <h6 class="text-uppercase info-title">balance</h6>
+                                    <span class="balance-icon"><i class="fas fa-dollar-sign"></i></span>
+                                    <h4 class="text-uppercase mt-2 balance" id="balance"> <span>$ </span><span
+                                            id="balance-amount">0</span></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5 my-3">
+                            <form id="expense-form" class=" expense-form">
+                                <h5 class="text-capitalize">please enter your expense</h5>
+                                <div class="form-group">
+                                    <input type="text" class="form-control expense-input" id="expense-input">
+                                </div>
+                                <h5 class="text-capitalize">please enter expense amount</h5>
+                                <div class="form-group">
+                                    <input type="number" class="form-control expense-input" id="amount-input">
+                                </div>
+                                <button type="submit" class="btn text-capitalize expense-submit" id="expense-submit">add
+                                    expense</button>
+                            </form>
+                        </div>
+                        <div class="col-md-7 my-3">
+                            <div class="expense-list" id="expense-list">
+
+                                <div class="expense-list__info d-flex justify-content-between text-capitalize">
+                                    <h5 class="list-item">expense title</h5>
+                                    <h5 class="list-item">expense value</h5>
+                                    <h5 class="list-item"></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js"></script>
+
+    <script>
+        class UI {
+            constructor() {
+                this.budgetFeedback = document.querySelector(".budget-feedback");
+                this.expenseFeedback = document.querySelector(".expense-feedback");
+                this.budgetForm = document.getElementById("budget-form");
+                this.budgetInput = document.getElementById("budget-input");
+                this.budgetAmount = document.getElementById("budget-amount");
+                this.expenseAmount = document.getElementById("expense-amount");
+                this.balance = document.getElementById("balance");
+                this.balanceAmount = document.getElementById("balance-amount");
+                this.expenseForm = document.getElementById("expense-form");
+                this.expenseInput = document.getElementById("expense-input");
+                this.amountInput = document.getElementById("amount-input");
+                this.expenseList = document.getElementById("expense-list");
+                this.itemList = [];
+                this.itemID = 0;
+            }
+
+            //submit budget method
+            submitBudgetForm() {
+                const value = this.budgetInput.value;
+                if (value === '' || value < 0) {
+                    this.budgetFeedback.classList.add('showItem');
+                    this.budgetFeedback.innerHTML = `<p>value cannot be empty or negative</p>`;
+                    const self = this;
+                    setTimeout(function () {
+                        self.budgetFeedback.classList.remove('showItem');
+                    }, 3000);
+                } else {
+                    this.budgetAmount.textContent = value;
+                    this.budgetInput.value = '';
+                    this.showBalance();
+                }
+            }
+
+            //show balance
+            showBalance() {
+                const expense = this.totalExpense();
+                const total = parseInt(this.budgetAmount.textContent) - expense;
+                this.balanceAmount.textContent = total;
+                if (total < 0) {
+                    this.balance.classList.remove('showGreen', 'showBlack');
+                    this.balance.classList.add('showRed');
+                } else if (total > 0) {
+                    this.balance.classList.remove('showRed', 'showBlack');
+                    this.balance.classList.add('showGreen');
+                } else if (total === 0) {
+                    this.balance.classList.remove('showRed', 'showGreen');
+                    this.balance.classList.add('showBlack');
+                }
+            }
+            //submit expense form
+            submitExpenseForm() {
+                const expenseValue = this.expenseInput.value;
+                const amountValue = this.amountInput.value;
+                if (expenseValue === '' || amountValue === '' || amountValue < 0) {
+                    this.expenseFeedback.classList.add('showItem');
+                    this.expenseFeedback.innerHTML = `<p>values cannot be empty or negative</p>`;
+                    const self = this;
+                    setTimeout(function () {
+                        self.expenseFeedback.classList.remove('showItem');
+                    }, 3000)
+                } else {
+                    let amount = parseInt(amountValue);
+                    this.expenseInput.value = '';
+                    this.amountInput.value = '';
+
+                    let expense = {
+                        id: this.itemID,
+                        title: expenseValue,
+                        amount: amount
+                    }
+                    this.itemID++;
+                    this.itemList.push(expense);
+                    this.addExpense(expense);
+                    this.showBalance();
+
+                }
+            }
+
+            //add expense
+            addExpense(expense) {
+                const div = document.createElement('div');
+                div.classList.add('expense');
+                div.innerHTML = `<div class="expense-item d-flex justify-content-between align-items-baseline">
+
+    <h6 class="expense-title mb-0 text-uppercase list-item" style="margin-top: -50px; margin-left: 200px;">- ${expense.title}</h6>
+    <h5 class="expense-amount mb-0 list-item" style="margin-left: 200px;">$${expense.amount}</h5>
+
+    <div class="expense-icons list-item">
+
+     <a href="#" class="edit-icon mx-2" data-id="${expense.id}">
+      <i class="fas fa-edit"></i>
+     </a>
+     <a href="#" class="delete-icon" data-id="${expense.id}">
+      <i class="fas fa-trash"></i>
+     </a>
+    </div>
+   </div`;
+                this.expenseList.appendChild(div);
+            }
+
+            //total expense
+            totalExpense() {
+                let total = 0;
+                if (this.itemList.length > 0) {
+                    total = this.itemList.reduce(function (acc, curr) {
+                        acc += curr.amount;
+                        return acc;
+                    }, 0)
+                }
+                this.expenseAmount.textContent = total;
+                return total;
+            }
+
+            //edit expense
+            editExpense(element) {
+                let id = parseInt(element.dataset.id);
+                let parent = element.parentElement.parentElement.parentElement;
+                //remove from DOM
+                this.expenseList.removeChild(parent);
+                //remove from the list
+                let expense = this.itemList.filter(function (item) {
+                    return item.id === id;
+                })
+                //show values
+                this.expenseInput.value = expense[0].title;
+                this.amountInput.value = expense[0].amount;
+                //remove from the list
+                let tempList = this.itemList.filter(function (item) {
+                    return item.id !== id;
+                })
+                this.itemList = tempList;
+                this.showBalance();
+            }
+
+            //delete expense
+            deleteExpense(element) {
+                let id = parseInt(element.dataset.id);
+                let parent = element.parentElement.parentElement.parentElement;
+                //remove from DOM
+                this.expenseList.removeChild(parent);
+                //remove from the list
+                let tempList = this.itemList.filter(function (item) {
+                    return item.id !== id;
+                })
+                this.itemList = tempList;
+                this.showBalance();
+            }
+        }
+
+        function eventListeners() {
+            const budgetForm = document.getElementById('budget-form');
+            const expenseForm = document.getElementById('expense-form');
+            const expenseList = document.getElementById('expense-list');
+
+            //new instance of UI Class
+            const ui = new UI();
+
+            //budget form submit
+            budgetForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+                ui.submitBudgetForm();
+            })
+            //expense form submit
+            expenseForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+                ui.submitExpenseForm();
+
+            })
+            //expense list submit
+            expenseList.addEventListener('click', function (event) {
+                if (event.target.parentElement.classList.contains('edit-icon')) {
+                    ui.editExpense(event.target.parentElement);
+                } else if (event.target.parentElement.classList.contains('delete-icon')) {
+                    ui.deleteExpense(event.target.parentElement);
+                }
+            })
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            eventListeners();
+        })
+    </script>
 
     <script>
         function imgsplit() {
