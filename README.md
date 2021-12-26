@@ -12,17 +12,17 @@
 - Linode: Hosting and storage
 - Send email: Twilio
 
-## 💾 Use of CockroachDB
+## 📧 Use of Twilio
 
-- We have used CockroachDB as a primary database because it is an easy-to-use, open-source and indestructible SQL database.
+- We used Twilio to send emails to our users. Twilio is a cloud-based SMS service that allows us to send text messages to our users. We used Twilio to send emails to our users. Twilio is a cloud-based SMS service that allows us to send text messages to our users.
 
 ## ☁️ Use of Linode
 
 - We utilized Linode for its hosting and storage. Linode is one of the top IaaS providers and is incredibly easy to use and the free Linode credit from MLH for us to learn and build on Linode was the cherry on the cake! Linode is fast, flexible, and reliable, and we truly enjoyed using it.
 
-## 📧 Use of Twilio
+## 💾 Use of CockroachDB
 
-We used Twilio to send emails to our users. Twilio is a cloud-based SMS service that allows us to send text messages to our users. We used Twilio to send emails to our users. Twilio is a cloud-based SMS service that allows us to send text messages to our users.
+- We have used CockroachDB as a primary database because it is an easy-to-use, open-source and indestructible SQL database.
 
 ## 🧠 Challenges we ran into
 
