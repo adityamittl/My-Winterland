@@ -2,20 +2,23 @@
 
 ## 💡 Inspiration
 
-This witer is stressful enough without holiday shopping! From buying products entirely online, to ensuring a fully remote delivery, there are a lot of added stressors this holiday season. We’ve created a simple, easy to use, and effective solution to help you manage your tracking packages and spending winter holidays easily.
+This witer is stressful enough without holiday shopping! From buying products entirely online, to ensuring a fully remote delivery, there are a lot of added stressors this holiday season. We’ve created a simple, easy to use, and effective solution to help you manage your tracking packages and spending winter holidays easily. <br>
+Finding amazing holiday recipies and recommended Netflix movies and shows personalized to user's taste acts as a cherry on cake.
 
 ## 💻 What it does
 
 My Winterland is a simple, easy to use, and effective solution to help you manage your tracking packages and spending winter holidays easily.
-The application allowing users to easily track their gift lists, find recipes, recommend movies to watch with whole family and maintain budget.
+The application allows users to easily track their gift lists, find recipes, recommend movies to watch with whole family and maintain budget. <br>
 You can also add your budget and set your delivery address. Once you’ve added your gift lists, you can start tracking your packages. 
 
+## 🤔 How it Works?
 
-<!-- First, enter in your budget. Then input the people you're thinking about this holiday season. From there, add gifts to your wishlist for each person, either manually, or using our partnering Chrome extension. The extension is built to make it easy to find gifts for those you love. Log in to Google. Surf Amazon, and then find a cool gift for that one special friend. If there's one that you would think you want to buy, you can add that gift to your wishlist for that friend. Later, if you choose to buy that gift, you can manage your bought gifts and balance your budget in your gift hub on the giftn web app. Shopping made easy! Once you do buy all those gifts, keep your tracking numbers stored in our tracking number hub. With COVID, gift giving might look a little different—-you may be sending gifts straight to your friends or loved one's houses. With this in mind, you can send an auto-generated email sending your friend or loved one some holiday cheer (along with the tracking number of the package and a personalized message, of course). It is is super easy to get started with giftn! -->
+To begin, input your budget. Then list the folks you're thinking of throughout the holidays. Then, for each individual, add things to your wishlist. Browse Amazon for a unique present for that one special buddy. If there's something you believe you'd want to get for a buddy, you may put it on your wishlist. If you decide to buy the present later, you may manage your purchased gifts and budget in your gift hub on our app. Shopping has never been easier! Keep your tracking numbers in our tracking number hub once you've purchased all of those presents.
+Gift giving with COVID may take on a new form—you may be sending gifts directly to your friends' or loved ones' homes. With this in mind, you may send an auto-generated email to a friend or loved one wishing them a happy holiday season (along with the tracking number of the package and a personalised message, of course).
 
 ## ⚙️How we built it
 
-- ML: Python, Skikit-Learn, TensorFlow
+- ML: Python, Skikit-Learn
 - Frontend: HTML, CSS, JS
 - Backend: Django
 - Database: CockroachDB
@@ -36,11 +39,11 @@ You can also add your budget and set your delivery address. Once you’ve added 
 
 ## 🧠 Challenges we ran into
 
-Completing the project in the given time frame
+One of the biggest challenges we ran into was integration of all these features. We had to build a complex, dynamic, and responsive frontend that allowed users to easily manage their gift lists, find recipes, recommend movies to watch with whole family and maintain budget.
 
 ## 🏅 Accomplishments that we're proud of
 
-Completing all these features in just two days.
+Collaborating with each other working on different aspects on our project and completing all these features in just two days.
 
 ## 📖 What we learned
 
