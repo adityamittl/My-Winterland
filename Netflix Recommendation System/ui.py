@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import pickle
+import bs4 as BeautifulSoup
+import requests
 
 similarity = pickle.load(open('similarity.pkl', 'rb'))
 
@@ -19,34 +21,47 @@ def recommend(title):
 
     return recommendations
 
+def get_poster(name):
+    name = name.replace(" ","+")
+    base_url = "https://www.imdb.com"
+    url = "https://www.imdb.com/find?q="+name
+    page = requests.get(url)
+    soup = BeautifulSoup.BeautifulSoup(page.content, "html.parser")
+    res = soup.find_all("table",class_ = 'findList')[0]
+    s_url = res.find(class_ = "result_text").find('a')['href']
+    page2 = requests.get(base_url+s_url)
+    soup2 = BeautifulSoup.BeautifulSoup(page2.content,"html.parser")
+    poster_url = BeautifulSoup.BeautifulSoup(requests.get(base_url+soup2.find_all("a",class_="ipc-lockup-overlay ipc-focusable")[0]['href']).content,"html.parser").find_all(class_="MediaViewerImagestyles__PortraitContainer-sc-1qk433p-2 iUyzNI")[0].find("img").attrs["src"]
+    return poster_url
+
 st.image('header.png', use_column_width=True)
 
 option = st.selectbox("Select the movies/shows you've liked", tags_df['title'].values)
 
 if st.button("Recommend"):
-    rec = recommend(option)
-    
+    recomendations = recommend(option)
     st.subheader("Recommendations for you:")
 
     for i in range(5):
-        details = details_df[details_df['show_id'] == rec[i]]
-        st.header(str(i+1) + '. ' + details['title'].values[0])
-        st.write("Description - " + details['description'].values[0])
-        st.write("Genre(s) - " + details['listed_in'].values[0])
-        st.write("Rating - " + details['rating'].values[0])
+        col = st.columns([1, 2])
+        details = details_df[details_df['show_id'] == recomendations[i]]
+        col[0].image(get_poster(details['title'].values[0]),use_column_width=True, caption=details['title'].values[0])
+        col[1].subheader(str(i+1) + '. ' + details['title'].values[0])
+        col[1].write("Description - " + details['description'].values[0])
+        col[1].write("Genre(s) - " + details['listed_in'].values[0])
+        col[1].write("Rating - " + details['rating'].values[0])
         # for handling missing values in dataset
         try:
             star_cast = (details['cast'].values[0]).split(',')[:3]
-            st.write("Star Cast - " + star_cast[0] + ", " + star_cast[1] + ", " + star_cast[2])
+            col[1].write("Star Cast - " + star_cast[0] + ", " + star_cast[1] + ", " + star_cast[2])
         except:
             pass
         try:
-            st.write("Director - " + details['director'].values[0])
+            col[1].write("Director - " + details['director'].values[0])
         except:
             pass
         try:
-            st.write("Country - " + details['country'].values[0])
+            col[1].write("Country - " + details['country'].values[0])
         except:
             pass
         
-        st.write("")
