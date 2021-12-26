@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Donate | My Winterland</title>
+    <title>Thank Hut</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -232,84 +232,16 @@
                 display: none;
             }
         }
-
-        .home-section {
-            display: flex;
+        .home-section{
+            display:flex;
             flex-direction: column;
             align-items: center;
             justify-content: space-evenly;
         }
-
-        .box {
-            width: 300px;
-            padding: 40px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #191919;
-            text-align: center;
-            border-radius: 25px;
-        }
-
-        .box h1 {
-            color: white;
-            text-transform: uppercase;
-            font-weight: 500;
-        }
-
-        .box input[type="text"] {
-            border: 0;
-            background: none;
-            display: block;
-            margin: 20px auto;
-            text-align: center;
-            border: 2px solid #3498db;
-            padding: 14px 10px;
-            width: 200px;
-            outline: none;
-            color: white;
-            border-radius: 24px;
-            transition: 0.25s;
-        }
-
-        .box input[type="text"]:focus {
-            width: 280px;
-            border-color: #2ecc71;
-            margin-left: -30px;
-        }
-
-        .box input[type="submit"] {
-            border: 0;
-            background: none;
-            display: block;
-            margin: 20px auto;
-            text-align: center;
-            border: 2px solid #2ecc71;
-            padding: 14px 40px;
-            outline: none;
-            color: white;
-            border-radius: 24px;
-            transition: 0.25s;
-            cursor: pointer;
-        }
-
-        .box input[type="submit"]:hover {
-            background: #2ecc71;
-        }
-
-        .donate_btn {
-            background-color: #2ecc71;
-            color: white;
-            padding: 5px;
-            border-color: navajowhite;
-            border-radius: 15px;
-            font-size: 20px;
-        }
     </style>
     <div class="sidebar">
         <div class="logo-details">
-            <div class="logo_name">My Winterland</div>
+            <div class="logo_name">Thank Hut</div>
             <i class='bx bx-menu' id="btn"></i>
         </div>
         <ul class="nav-list">
@@ -321,40 +253,20 @@
                 <span class="tooltip">Dashboard</span>
             </li>
             <li>
-                <a href="/budget">
-                    <i class='bx bx-coin'></i>
-                    <span class="links_name">Maintain budget</span>
+                <a href="/note">
+                    <i class='bx bx-notepad'></i>
+                    <span class="links_name">Write a note</span>
                 </a>
-                <span class="tooltip">Maintain budget</span>
-            </li>
-            <li>
-                <a href="/tracking">
-                    <i class='bx bxs-truck'></i>
-                    <span class="links_name">Send Tracking Details</span>
-                </a>
-                <span class="tooltip">Send Tracking Details</span>
-            </li>
-            <li>
-                <a href="/movie">
-                    <i class='bx bx-movie-play'></i>
-                    <span class="links_name">Recommended Movies</span>
-                </a>
-                <span class="tooltip">Recommended Movies</span>
-            </li>
-            <li>
-                <a href="/donate">
-                    <i class='bx bx-donate-heart'></i>
-                    <span class="links_name">Donate</span>
-                </a>
-                <span class="tooltip">Donate</span>
+                <span class="tooltip">Write a note</span>
             </li>
             <li>
                 <a href="/send">
-                    <i class='bx bx-mail-send'></i>
-                    <span class="links_name">Send New Year card</span>
+                    <i class='bx bx-mail-send' ></i>
+                    <span class="links_name">Send thank you card</span>
                 </a>
-                <span class="tooltip">Send New Year card</span>
+                <span class="tooltip">Send thank you card</span>
             </li>
+            
 
             <li class="profile">
                 <a href="/signout">
@@ -364,20 +276,6 @@
         </ul>
     </div>
     <section class="home-section">
-        <form class="box" action="" method="post">
-
-            <h1>Donate</h1>
-
-            <input type="text" name="" placeholder="First Name">
-            <input type="text" name="" placeholder="Last Name">
-            <input type="text" name="" placeholder="Email Address">
-            <input type="text" name="" placeholder="Card Number">
-            <input type="text" name="" placeholder="Expiration Date">
-            <input type="text" name="" placeholder="Security Code(CVV)">
-            <input type="text" name="" placeholder="Amount to donate">
-
-            <button class="donate_btn">Donate</button>
-        </form>
 
     </section>
 
