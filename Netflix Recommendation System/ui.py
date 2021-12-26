@@ -43,7 +43,7 @@ if st.button("Recommend"):
     st.subheader("Recommendations for you:")
 
     for i in range(5):
-        col = st.columns([1, 2])
+        col = st.columns([1.15, 2])
         details = details_df[details_df['show_id'] == recomendations[i]]
         col[0].image(get_poster(details['title'].values[0]),use_column_width=True, caption=details['title'].values[0])
         col[1].subheader(str(i+1) + '. ' + details['title'].values[0])
